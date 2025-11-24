@@ -1,6 +1,22 @@
 #include<iostream>
-
 using namespace std;
+
+
+void f(int& x) {
+    cout << "f(int&)\n";
+}
+
+void f(const int& x) {
+    cout << "f(const int&)\n";
+}
+// OPTIONAL preview for later days:
+// void f(int&& x) {
+//     cout << "f(int&&)\n";
+// }
+
+int make_int() {
+    return 42;
+}
 
 int main(){
     int ival = 10;
@@ -55,6 +71,16 @@ int main(){
     int ai, &ari = ai;
     ai = 5; ari = 10;
     std::cout << ai << " " << ari << std::endl;
+
+
+    int x = 10;
+    const int cx = 20;
+
+    cout << "call 1: f(x)\n";          f(x);
+    cout << "call 2: f(cx)\n";         f(cx);
+    cout << "call 3: f(10)\n";         f(10);
+    cout << "call 4: f(x + 1)\n";      f(x + 1);
+    cout << "call 5: f(make_int())\n"; f(make_int());
 
     return 0;
 
